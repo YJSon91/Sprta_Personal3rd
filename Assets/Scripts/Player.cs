@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
         Controller = GetComponent<CharacterController>();
 
         stateMachine = new PlayerStateMachine(this);
+        stateMachine.ChangeState(stateMachine.IdleState);
     }
 
     private void Start()
