@@ -17,7 +17,7 @@ public class PlayerAnimationData
     [SerializeField] private string fallParameterName = "Fall";
 
     [SerializeField] private string attackParameterName = "@Attack";
-    [SerializeField] private string comboAttackParameterName = "comboAttack";
+    [SerializeField] private string comboAttackParameterName = "ComboAttack";
 
     public int GroundParameterHash { get; private set; }
     public int IdleParameterHash { get; private set; }
