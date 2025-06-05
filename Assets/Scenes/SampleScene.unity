@@ -858,7 +858,7 @@ MonoBehaviour:
     jumpParameterName: Jump
     fallParameterName: Fall
     attackParameterName: '@Attack'
-    comboAttackParameterName: comboAttack
+    comboAttackParameterName: ComboAttack
 --- !u!114 &568043022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -884,6 +884,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
+  drag: 0.3
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0

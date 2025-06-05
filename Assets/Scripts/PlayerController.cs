@@ -10,9 +10,9 @@ public class PlayerController : MonoBehaviour
     
     void Awake()
     {
-        // Initialize the PlayerInputs and PlayerActions
-        playerInputs = new PlayerInputs();
+        playerInputs = new PlayerInputs();        
         playerActions = playerInputs.Player;
+      
     }
    
     private void OnEnable()

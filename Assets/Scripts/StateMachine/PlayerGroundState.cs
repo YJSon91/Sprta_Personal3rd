@@ -27,6 +27,7 @@ public class PlayerGroundState : PlayerBaseState
         if (stateMachine.IsAttacking)
         {
             OnAttack();
+            stateMachine.IsAttacking = false;
             return;
         }
     }

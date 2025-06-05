@@ -39,6 +39,7 @@ public class PlayerBaseState : IState
     }
     protected virtual void AddInputActionsCallbacks()
     {
+      
         PlayerController input = stateMachine.Player.Input;
         input.playerActions.Movement.canceled += OnMovementCanceled;
         input.playerActions.Run.started += OnRunStarted;
