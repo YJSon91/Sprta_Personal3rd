@@ -14,12 +14,12 @@ public class PlayerBaseState : IState
 
     public virtual void Enter()
     {
-
+        AddInputActionsCallbacks();
     }
 
     public virtual void Exit()
     {
-
+        RemoveInputActionsCallbacks();
     }
 
     public virtual void HandleInput()
@@ -36,6 +36,20 @@ public class PlayerBaseState : IState
     {
         // StartAnimation 함수 먼저 작성
         Move();
+    }
+    protected virtual void AddInputActionsCallbacks()
+    {
+        PlayerController input = stateMachine.Player.Input;
+        input.playerActions.Movement.canceled += OnMovementCanceled;
+        input.playerActions.Run.started += OnRunStarted;
+    }
+
+    protected virtual void RemoveInputActionsCallbacks()
+    {
+        PlayerController input = stateMachine.Player.Input;
+        input.playerActions.Movement.canceled -= OnMovementCanceled;
+        input.playerActions.Run.started -= OnRunStarted;
+
     }
 
     protected void StartAnimation(int animationHash)
@@ -101,5 +115,14 @@ public class PlayerBaseState : IState
             Quaternion targetRotation = Quaternion.LookRotation(direction);
             playerTransform.rotation = Quaternion.Slerp(playerTransform.rotation, targetRotation, stateMachine.RotationDamping * Time.deltaTime);
         }
+    }
+    protected virtual void OnMovementCanceled(InputAction.CallbackContext context)
+    {
+
+    }
+
+    protected virtual void OnRunStarted(InputAction.CallbackContext context)
+    {
+
     }
 }
