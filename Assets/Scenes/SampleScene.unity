@@ -587,7 +587,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 253693831dd441247bee84a6fa85c963, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Data>k__BackingField: {fileID: 0}
+  <Data>k__BackingField: {fileID: 11400000, guid: 67773904bb555454db9b123364c78de1,
+    type: 2}
   <AnimationData>k__BackingField:
     groundParameterName: '@Ground'
     idleParameterName: Idle
