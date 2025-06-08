@@ -9,6 +9,8 @@ public class EnemyBaseState : IState
     {
         stateMachine = playerStateMachine;
         groundData = stateMachine.Enemy.Data.GroundData;
+
+        
     }
 
     public virtual void Enter()
@@ -54,6 +56,7 @@ public class EnemyBaseState : IState
     private Vector3 GetMovementDirection()
     {
         Vector3 dir = (stateMachine.Target.transform.position - stateMachine.Enemy.transform.position).normalized;
+    
         return dir;
     }
 
