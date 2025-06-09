@@ -6,6 +6,7 @@ public class EnemyAttackState : EnemyBaseState
 {
 
     private bool alreadyAppliedForce;
+    private bool alreadyAppliedDealing;
 
     public EnemyAttackState(EnemyStateMachine ememyStateMachine) : base(ememyStateMachine)
     {
@@ -17,6 +18,11 @@ public class EnemyAttackState : EnemyBaseState
         base.Enter();
         StartAnimation(stateMachine.Enemy.AnimationData.AttackParameterHash);
         StartAnimation(stateMachine.Enemy.AnimationData.BaseAttackParameterHash);
+        alreadyAppliedForce = false;
+        alreadyAppliedDealing = false;
+
+        stateMachine.MovementSpeedModifier = 0;
+
     }
 
     public override void Exit()
@@ -38,21 +44,19 @@ public class EnemyAttackState : EnemyBaseState
             if (normalizedTime >= stateMachine.Enemy.Data.ForceTransitionTime)
                 TryApplyForce();
 
-        }
-        else
-        {
-            if (IsInChaseRange())
+            if (!alreadyAppliedDealing && normalizedTime >= stateMachine.Enemy.Data.Dealing_Start_TransitionTime)
             {
-                stateMachine.ChangeState(stateMachine.ChasingState);
-                return;
+                stateMachine.Enemy.Weapon.SetAttack(stateMachine.Enemy.Data.Damage, stateMachine.Enemy.Data.Force);
+                stateMachine.Enemy.Weapon.gameObject.SetActive(true);
+                alreadyAppliedDealing = true;
             }
-            else
-            {
-                stateMachine.ChangeState(stateMachine.IdleState);
-                return;
-            }
-        }
 
+            if (alreadyAppliedDealing && normalizedTime >= stateMachine.Enemy.Data.Dealing_End_TransitionTime)
+            {
+                stateMachine.Enemy.Weapon.gameObject.SetActive(false);
+            }
+
+        }
     }
 
     private void TryApplyForce()
