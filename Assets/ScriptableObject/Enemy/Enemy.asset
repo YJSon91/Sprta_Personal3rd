@@ -13,14 +13,15 @@ MonoBehaviour:
   m_Name: Enemy
   m_EditorClassIdentifier: 
   <PlayerChasingRange>k__BackingField: 10
-  <AttackRange>k__BackingField: 1.5
+  <AttackRange>k__BackingField: 1.7
   <ForceTransitionTime>k__BackingField: 0.1
   <Force>k__BackingField: 1
-  Damage: 10
+  Damage: 50
   <GroundData>k__BackingField:
     <BaseSpeed>k__BackingField: 5
     <BaseRotationDamping>k__BackingField: 1
     <WalkSpeedModifier>k__BackingField: 0.225
-    <RunSpeedModifier>k__BackingField: 1
+    <RunSpeedModifier>k__BackingField: 0.45
   <Dealing_Start_TransitionTime>k__BackingField: 0.25
-  <Dealing_End_TransitionTime>k__BackingField: 0.35
+  <Dealing_End_TransitionTime>k__BackingField: 0.45
+  <StoppingDistance>k__BackingField: 1.5

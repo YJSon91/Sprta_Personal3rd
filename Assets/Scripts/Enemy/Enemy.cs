@@ -46,7 +46,7 @@ public class Enemy : MonoBehaviour
     }
     protected bool IsInChasingRange()
     {
-       // if (stateMachine.Target.IsDie) return false;
+       if (stateMachine.Target.IsDie) return false;
 
         float playerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.Enemy.transform.position).sqrMagnitude;
         return playerDistanceSqr <= stateMachine.Enemy.Data.PlayerChasingRange * stateMachine.Enemy.Data.PlayerChasingRange;
