@@ -1,18 +1,59 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using TMPro; // TextMeshPro를 사용하기 위해 네임스페이스 추가
 
 public class UIMainMenu : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private TextMeshProUGUI levelText;
+    [SerializeField] private TextMeshProUGUI expText;
+    [SerializeField] private TextMeshProUGUI goldText;
+    private Character character;
+    // Status 버튼에 연결할 함수
+    private void Start()
     {
-        
+        character = FindObjectOfType<Character>();
+        if (character == null) return;
+
+        // character의 스탯 변경 이벤트를 구독합니다.
+        character.OnStatsChanged += UpdateUI;
+
+        // 처음 한 번 UI를 초기화합니다.
+        UpdateUI();
     }
 
-    // Update is called once per frame
-    void Update()
+    // FixedUpdate는 이제 필요 없으므로 삭제합니다.
+
+    // UI를 업데이트하는 함수
+    private void UpdateUI()
     {
-        
+        if (character == null) return;
+        levelText.text = $"Lv: {character.Level}";
+        goldText.text = $"Gold: {character.CurrentGold}";
+        expText.text = $"Exp: {character.Exp} / {character.MaxExp}";
     }
+
+    private void OnDestroy()
+    {
+        // 오브젝트가 파괴될 때 구독을 해제하여 메모리 누수를 방지합니다.
+        if (character != null)
+        {
+            character.OnStatsChanged -= UpdateUI;
+        }
+    }
+    public void OnClickStatusButton()
+    {
+        UIManager.Instance.ShowStatusUI();
+    }
+
+    // Inventory 버튼에 연결할 함수
+    public void OnClickInventoryButton()
+    {
+        UIManager.Instance.ShowInventoryUI();
+    }
+
+    // Back 버튼에 연결할 함수
+    public void OnClickBackButton()
+    {
+        UIManager.Instance.CloseAllPanels();
+    }
+
 }

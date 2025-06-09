@@ -14,12 +14,12 @@ public class EnemyStateMachine : StateMachine
     public EnemyIdleState IdleState { get; }
     public EnemyChasingState ChasingState { get; }
     public EnemyAttackState AttackState { get; }
-    public Health Target { get; private set; }
+    public Character Target { get; private set; }
 
     public EnemyStateMachine(Enemy enemy)
     {
         this.Enemy = enemy;
-        Target = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>(); // 게임오브젝트 빼면 경고뜨는거 확인해봐야함
+        Target = GameObject.FindGameObjectWithTag("Player").GetComponent<Character>(); // 게임오브젝트 빼면 경고뜨는거 확인해봐야함
 
         IdleState = new EnemyIdleState(this);
         ChasingState = new EnemyChasingState(this);
