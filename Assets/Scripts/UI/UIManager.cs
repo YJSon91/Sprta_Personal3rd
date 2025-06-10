@@ -75,10 +75,6 @@ public class UIManager : MonoBehaviour
 
     public void ShowStatusUI()
     {
-        if (playerCharacter != null)
-        {
-            statusPanel.UpdateStatusUI(playerCharacter);
-        }
         inventoryPanel.Hide();
         statusPanel.Show();
     }

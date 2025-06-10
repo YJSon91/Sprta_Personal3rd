@@ -26,9 +26,9 @@ public class UIMainMenu : MonoBehaviour
     private void UpdateUI()
     {
         if (character == null) return;
-        levelText.text = $"Lv: {character.Level}";
+        expText.text = $"EXP: {character.Exp} / {character.MaxExp}";
         goldText.text = $"Gold: {character.CurrentGold}";
-        expText.text = $"Exp: {character.Exp} / {character.MaxExp}";
+        levelText.text = $"LV: {character.Level}";
     }
 
     private void OnDestroy()

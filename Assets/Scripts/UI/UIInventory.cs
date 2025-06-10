@@ -6,8 +6,8 @@ public class UIInventory : MonoBehaviour
     private UIInventoryController uiInventoryController;
 
     private RectTransform rectTransform;
-    private float onScreenX = 235f;
-    private float offScreenX = 1850f;
+    private float onScreenX = 545f;
+    private float offScreenX = 2000f;
 
     private void Awake()
     {

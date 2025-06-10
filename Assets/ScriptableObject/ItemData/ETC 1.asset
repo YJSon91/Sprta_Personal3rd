@@ -14,5 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: ETC 1
   itemDescription: ETC 1
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: da7129ed6a246f048a49d8d97de2d2d4, type: 3}
   itemType: 2
+  equipmentType: 0
+  attackBonus: 0
+  defenseBonus: 0
+  criticalBonus: 0
+  healthBonus: 0
+  expBonus: 0
