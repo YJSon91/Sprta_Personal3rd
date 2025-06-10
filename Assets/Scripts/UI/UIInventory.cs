@@ -1,20 +1,29 @@
-// UIStatus.cs
 using UnityEngine;
 
 public class UIInventory : MonoBehaviour
 {
+    // ▼▼▼ 참조하는 스크립트의 타입과 변수 이름을 변경합니다. ▼▼▼
+    private UIInventoryController uiInventoryController;
+
     private RectTransform rectTransform;
-    private float onScreenX = 235f;    // 화면에 보일 때의 X 좌표
-    private float offScreenX = 1500f; // 화면 밖에 있을 때의 X 좌표 (값은 실제 캔버스 크기에 맞게 조절)
+    private float onScreenX = 235f;
+    private float offScreenX = 1850f;
 
     private void Awake()
     {
+        // ▼▼▼ 여기서도 변경된 이름으로 컴포넌트를 가져옵니다. ▼▼▼
+        uiInventoryController = GetComponent<UIInventoryController>();
         rectTransform = GetComponent<RectTransform>();
     }
 
     public void Show()
     {
-        // UIUtil을 통하는 대신, 자신의 RectTransform 위치를 직접 변경합니다.
+        // ▼▼▼ 변경된 변수 이름으로 함수를 호출합니다. ▼▼▼
+        if (uiInventoryController != null)
+        {
+            uiInventoryController.Redraw();
+        }
+
         Vector2 newPosition = rectTransform.anchoredPosition;
         newPosition.x = onScreenX;
         rectTransform.anchoredPosition = newPosition;
@@ -22,7 +31,6 @@ public class UIInventory : MonoBehaviour
 
     public void Hide()
     {
-        // UIUtil을 통하는 대신, 자신의 RectTransform 위치를 직접 변경합니다.
         Vector2 newPosition = rectTransform.anchoredPosition;
         newPosition.x = offScreenX;
         rectTransform.anchoredPosition = newPosition;

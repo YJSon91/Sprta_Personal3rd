@@ -1,6 +1,13 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable] // 인스펙터 창에 보이게 하기 위한 어트리뷰트
+public class InventorySlot
+{
+    public ItemData item;
+    public int quantity;
+}
 public class Character : MonoBehaviour
 {
     [SerializeField] private int maxHealth = 100;
@@ -27,6 +34,9 @@ public class Character : MonoBehaviour
     public int CurrentCritical => Critical;
     public int Health => health;
 
+    [Header("Inventory")]
+    // ▼▼▼ 인벤토리 리스트를 추가합니다. ▼▼▼
+    public List<InventorySlot> inventory = new List<InventorySlot>();
     private void Start()
     {
         health = maxHealth;
