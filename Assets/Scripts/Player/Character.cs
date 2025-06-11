@@ -17,7 +17,9 @@ public class Character : MonoBehaviour
     [SerializeField] private int gold = 20000;
     [SerializeField] private int baseAttack = 35; 
     [SerializeField] private int baseDefense = 45; 
-    [SerializeField] private int baseCritical = 25; 
+    [SerializeField] private int baseCritical = 25;
+    [SerializeField] private string nickName = "Spartan";
+    [SerializeField] private string charClass = "Knight";
 
     private int health;
     public event Action OnDie;
@@ -117,6 +119,16 @@ public class Character : MonoBehaviour
         get { return maxExp; }
         set { maxExp = Mathf.Max(100, value); } // 최소 경험치는 100으로 제한
     }
+    public string NickName
+    {
+        get { return nickName; }
+        set { nickName = value; }
+    }
+    public string CharClass
+    {
+        get { return charClass; }
+        set { charClass = value; }
+    }
     // 레벨업 함수   
     private void LevelUp()
     {
@@ -141,6 +153,7 @@ public class Character : MonoBehaviour
     // ▼▼▼ UI 갱신을 위한 이벤트 추가 ▼▼▼
     public event Action OnEquipmentChanged;
     public event Action OnStatsChanged; // 스탯이 변경될 때 알림을 보낼 이벤트
+    public event Action OnExpChanged;  //  경험치 변경을 알리는 이벤트 추가
 
     // ▼▼▼ 아이템을 장착하는 함수 추가 ▼▼▼
     public void Equip(InventorySlot slot)
@@ -192,14 +205,17 @@ public class Character : MonoBehaviour
 
         Debug.Log(health);
     }
-    
+
 
     // 예시: 경험치를 얻는 함수
     public void AddExp(int amount)
     {
         exp += amount;
-        // ... 레벨업 로직 ...
-        OnStatsChanged?.Invoke(); // 경험치가 변경되었음을 알림
+        // ... (나중에 여기에 레벨업 로직 추가) ...
+
+        // 경험치가 변경되었음을 구독자들에게 알립니다.
+        OnExpChanged?.Invoke();
+        Debug.Log($"경험치 {amount} 획득! 현재 경험치: {exp}");
     }
 
     // 골드를 얻는 함수

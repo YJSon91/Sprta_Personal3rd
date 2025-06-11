@@ -6,6 +6,9 @@ public class UIMainMenu : MonoBehaviour
     [SerializeField] private TextMeshProUGUI levelText;
     [SerializeField] private TextMeshProUGUI expText;
     [SerializeField] private TextMeshProUGUI goldText;
+    [SerializeField] private TextMeshProUGUI nickNameText;
+    [SerializeField] private TextMeshProUGUI charClassText;
+
     private Character character;
     // Status 버튼에 연결할 함수
     private void Start()
@@ -27,8 +30,10 @@ public class UIMainMenu : MonoBehaviour
     {
         if (character == null) return;
         expText.text = $"EXP: {character.Exp} / {character.MaxExp}";
-        goldText.text = $"Gold: {character.CurrentGold}";
+        goldText.text = $"{character.CurrentGold}";
         levelText.text = $"LV: {character.Level}";
+        nickNameText.text = character.NickName;
+        charClassText.text = character.CharClass;
     }
 
     private void OnDestroy()
