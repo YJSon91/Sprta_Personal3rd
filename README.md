@@ -32,10 +32,13 @@ ScriptableObject를 활용한 데이터 기반 아이템 관리
 카메라 워크
 
 Cinemachine을 이용한 부드러운 카메라 추적
+
 🧑‍💻 팀원 소개
 손영준 - 모든 기능 개발
+
 📅 개발 기간
 2025년 6월 4일 ~ 2025년 6월 11일
+
 🛠 사용한 기술
 Engine: Unity Engine
 Language: C#
@@ -45,6 +48,7 @@ Cinemachine
 ScriptableObject (아이템 데이터 관리)
 Unity Event System (이벤트 기반 로직)
 Prefab (UI 및 오브젝트 재사용)
+
 🖼️ 에셋
 UI & Icons: Kenney.nl (UI Pack, Input Pack 등)
 Icons: Pixel Art Icon Pack - RPG
